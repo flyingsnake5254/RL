@@ -1,6 +1,6 @@
 檔案說明：
 
-RL_maze_pgm.py：
+RL_maze_pgm.py ：
     內容：
         使用強化學習、策略梯度法(Policy Gradient Method)找出迷宮最短路徑
 
