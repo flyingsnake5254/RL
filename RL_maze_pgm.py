@@ -139,7 +139,7 @@ def run(pi, s):
 
 
 def updateTheta(result, pi, theta):
-    eta = 0.1
+    eta = 0.3
     thetaX, thetaY = theta.shape
     Nsa = np.zeros((thetaX, thetaY))
     Nsia = np.zeros((thetaX, thetaY))
