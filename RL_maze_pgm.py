@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import numpy.random
-from IPython.display import HTML
+
 
 fig = plt.figure(figsize=(5, 5))
 ax = plt.gca()
@@ -39,7 +39,7 @@ def makeFig():
 
     # interval 參數可調整動畫速度
     anim = animation.FuncAnimation(fig, animate, init_func=init, frames=len(results), interval=100, repeat=False)
-    HTML(anim.to_jshtml())
+
 
     plt.show()
 

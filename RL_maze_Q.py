@@ -47,12 +47,12 @@ def getNextState(s , a):
     elif a == 3: # right
         return s + 1
 
-def srasa(s , a , nextS , nextA , Q , gamma , eta , r):
+def QLearning(s , a , nextS  , Q , gamma , eta , r):
     newQ = Q.copy()
     if nextS == 8:
         newQ[s , a] = Q[s , a] + eta * (r - Q[s , a])
     else:
-        newQ[s , a] = Q[s , a] + eta * (r + gamma * Q[nextS , nextA] - Q[s , a])
+        newQ[s , a] = Q[s , a] + eta * (r + gamma * np.nanmax(Q[nextS,:]) - Q[s , a])
     return newQ
 
 def init():
@@ -170,9 +170,9 @@ while count < 100:
             r = 1
         else:
             r = 0
-            nextStateAction = getAction(nextState , Q , pi , epsilon)
 
-        Q = srasa(s, nextAction , nextState , nextStateAction , Q , eta , gamma , r)
+
+        Q = QLearning(s, nextAction , nextState , Q , eta , gamma , r)
 
         if nextState == 8:
             mem = [8 , nextStateAction]
@@ -182,7 +182,7 @@ while count < 100:
             s = nextState
     results += result
     print("step : ", len(result) - 1)
-    print("result : " , result)
+
     count += 1
     epsilon = epsilon / 2
 makeFig()

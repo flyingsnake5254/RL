@@ -31,7 +31,25 @@
             1.使用價值迭代法
             2.Q 為行動價值函數
             3.使用 Sarsa 更新 Q
+                Sarsa：
+                    Q(st , at) = Q(st , at) + eta * (TD error)
+
+                    TD error ( Temporal Deffierence error )：
+                        TD error = Rt+1 + gamma * Q(st+1 , at+1) - Q(st , at)
             4.gamma 為時間折扣率 ( 概念類似銀行的複利率 )
             5.epsilon 為一機率，讓狀態根據此機率選擇隨機移動或是根據 Q函數移動。
             6.eta 為學習率
             7.count 為控制停止訓練模型的變數
+
+    RL_maze_Q.py：
+        內容：
+            使用強化學習、價值迭代法、Q學習找出迷宮最短路徑
+
+        程式內容：
+            1.與 Sarsa 不同的只有 "更新 Q函數 的方式"
+                Sarsa：
+                    newQ[s , a] = Q[s , a] + eta * (r + gamma * Q[nextS , nextA] - Q[s , a])
+                Q Learning：
+                    newQ[s , a] = Q[s , a] + eta * (r + gamma * np.nanmax(Q[nextS,:]) - Q[s , a])
+
+                Q Learning 採用下個狀態中具備「最大」行動價值的 Action
