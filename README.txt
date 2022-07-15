@@ -53,3 +53,26 @@
                     newQ[s , a] = Q[s , a] + eta * (r + gamma * np.nanmax(Q[nextS,:]) - Q[s , a])
 
                 Q Learning 採用下個狀態中具備「最大」行動價值的 Action
+
+    RL_cartpole.py：
+        內容：
+            利用強化學習、價值迭代法、Q學習，解決「倒立單擺問題」
+
+        程式內容：
+            1. observation 包含四個數值：
+                。車子位置 (-2.4 ~ 2.4 )
+                。車子速度 (-Inf ~ Inf )
+                。單擺角度 (-41.8 ~ 41.8 )
+                。單擺角速度 (-Inf ~ Inf )
+            2. 利用 cut 將數值離散化，CUT_SIZE 為切割的區塊數
+            3. 每次執行 Action 後，進行 Q Table 的更新
+            4. state ：
+                (1) 將 observation 離散化 (切成6區塊，其數值疆界於 0 ~ 5)
+                (2) 以 6 進為計算四個數值的和，結果極為 state
+                    ex：
+                        cartPos = 0, cartV = 4, poleAngle = 2, poleV = 5
+                        state = 6**0 * cartPos +
+                                6**1 * cartV +
+                                6**2 * poleAngle +
+                                6**3 * poleV
+            5. action 只有兩種情況，即向左 (0) 以及向右 (1)
