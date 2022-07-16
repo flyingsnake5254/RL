@@ -76,3 +76,10 @@
                                 6**2 * poleAngle +
                                 6**3 * poleV
             5. action 只有兩種情況，即向左 (0) 以及向右 (1)
+
+    PyTorch_MNIST.py：
+        內容：
+            使用 PyTorch 分類手寫數字。
+
+        程式內容：
+            如程式碼內註解
